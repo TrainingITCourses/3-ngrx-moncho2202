@@ -18,6 +18,7 @@ import { AgencyEffects } from './reducers/agency.effects';
 import { MissionTypeEffects } from './reducers/mission-type.effects';
 import { StatusEffects } from './reducers/status.effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
       : [],
     EffectsModule.forRoot([LaunchEffects, AgencyEffects, MissionTypeEffects, StatusEffects]),
     StoreRouterConnectingModule.forRoot({
-      stateKey: 'router' })
+      stateKey: 'router' }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
